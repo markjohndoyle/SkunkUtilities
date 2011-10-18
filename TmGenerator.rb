@@ -8,11 +8,12 @@ for i in (0..100)
     laserTempVal = 0;
   end
   laserTemp = laserTempVal.floor.to_s(2).rjust(11, '0')
-  fuel = maxFuel.to_s(2).rjust(16, '0')
+  fuel = maxFuel
   maxFuel = maxFuel - 10
-  flightHours = i.to_s(2).rjust(32, '0')
+  flightHours = i
   
 
-  tm = laserTemp + fuel + flightHours
+  print  laserTempVal.floor.to_s + " : " + fuel.to_s + " : " + flightHours.to_s + "\n"
+  tm = laserTemp + fuel.to_s(2).rjust(16, '0') + flightHours.to_s(2).rjust(32, '0')
   print tm + "\n"
 end
