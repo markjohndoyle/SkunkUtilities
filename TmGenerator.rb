@@ -1,5 +1,8 @@
 print "Generating TM\n"
 
+binTm = File.new("binTm.txt", 'w')
+decTm = File.new("decTm.txt", 'w')
+  
 maxFuel = 1000
 maxLaser = 2040
 for i in (0..100)
@@ -13,7 +16,9 @@ for i in (0..100)
   flightHours = i
   
 
-  print  laserTempVal.floor.to_s + " : " + fuel.to_s + " : " + flightHours.to_s + "\n"
+  decValues =  laserTempVal.floor.to_s + " : " + fuel.to_s + " : " + flightHours.to_s
   tm = laserTemp + fuel.to_s(2).rjust(16, '0') + flightHours.to_s(2).rjust(32, '0')
-  print tm + "\n"
+ 
+  binTm.write(tm + "\n")
+  decTm.write(decValues + "\n")
 end
