@@ -34,6 +34,10 @@ for i in (0..100)
   packetLength = payload.length.to_s(2).rjust(16, '0')
   
   tm = versionNum + typeIndicator + secHdrFlag + apid + seqFlags + seqCount + packetLength + payload
+  (8-tm.length%8).times do
+      tm = tm + '0'
+    end
+  
 
   print tm + "\n"
   binTm.write(tm + "\n")
