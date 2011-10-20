@@ -1,7 +1,7 @@
 print "Generating TM\n"
 
-binTm = File.new("binTm.txt", 'w')
-decTm = File.new("decTm.txt", 'w')
+binTm = File.new("binPacketTm.txt", 'w')
+decTm = File.new("decPayloadValuesTm.txt", 'w')
   
 maxFuel = 1500
 maxLaser = 2040
@@ -26,8 +26,8 @@ for i in (0..100)
   flightHours = i
   
 
-  decValues =  laserTempVal.floor.to_s + " : " + fuel.to_s + " : " + flightHours.to_s
-  payload = laserTemp + fuel.to_s(2).rjust(16, '0') + flightHours.to_s(2).rjust(32, '0')
+  decValues =  laserTempVal.floor.to_s + " : " + flightHours.to_s + " : " + fuel.to_s
+  payload = laserTemp + flightHours.to_s(2).rjust(31, '0') +  fuel.to_s(2).rjust(16, '0')
   
   # CCSDS Header stuff that requires calculating
   seqCount = i.to_s(2).rjust(14, '0')
