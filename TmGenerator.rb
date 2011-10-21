@@ -31,12 +31,12 @@ for i in (0..100)
   
   # CCSDS Header stuff that requires calculating
   seqCount = i.to_s(2).rjust(14, '0')
-  packetLength = payload.length.to_s(2).rjust(16, '0')
   
-  tm = versionNum + typeIndicator + secHdrFlag + apid + seqFlags + seqCount + packetLength + payload
-  (8-tm.length%8).times do
-      tm = tm + '0'
+  (8-payload.length%8).times do
+      payload = payload + '0'
     end
+  packetLength = payload.length.to_s(2).rjust(16, '0')/8-1
+  tm = versionNum + typeIndicator + secHdrFlag + apid + seqFlags + seqCount + packetLength + payload
   
 
   print tm + "\n"
